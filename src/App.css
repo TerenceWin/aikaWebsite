@@ -1,0 +1,145 @@
+html, body{
+    margin: 0; 
+    padding: 0; 
+    width: 100%; 
+    height: 100%;
+    font-family: Helvetica, Arial, sans-serif; 
+}
+
+
+.home-container{
+    width: 100vw; 
+    height: 100%;
+    padding: 0; 
+    margin: 0; 
+    background-color: #d8cfc4
+}
+
+.header{
+    height: 100px; 
+    width: 90%; 
+    display: flex; 
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.name{
+    font-size: 32px;
+    font-weight: 400;
+}
+
+.menu{
+    width: 10%; 
+    height: 100%; 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.menu-item{
+    cursor: pointer
+}
+
+.context{
+    width: 95%;
+    margin: 0 auto;
+    margin-top: 50px;
+    margin-bottom: 100px;
+    font-weight: normal;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    column-gap: 50px;
+    row-gap: 150px;
+}
+
+.gallary-item{
+    width: 100%; 
+    height: 400px; 
+    overflow: hidden;
+    border-radius: 5px; 
+    box-shadow: 5px 6px;
+}
+
+.gallary-item-img{
+    width: 100%;
+    height: 100%; 
+    object-fit: cover; 
+    object-position: center;
+    display: block; 
+    cursor: pointer; 
+}
+
+.gallary-item p{
+    z-index: 99;
+
+}
+
+.hr-for-footer{
+    padding: 0; 
+    margin: 0;
+    margin-top: 100px;
+    border: none; 
+    height: 1px;
+    width: 95%;
+    background-color: black;
+    margin: 0 auto;
+}
+
+.footer{
+    width: 90%;
+    height: 100px; 
+    margin: 0 auto; 
+    display: flex; 
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-left{
+    display: flex;
+    flex-direction: column;
+    justify-content: cemter;
+    align-items: center;
+}
+
+.footer-left p{
+}
+
+.SNS{
+    width: 200px;
+    height: 100px; 
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.SNS button{
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    font: inherit; 
+    color: inherit; 
+    cursor: pointer;
+    outline: inherit;
+}
+
+.sns-logo{
+    width: 40px; 
+    height: 40px; 
+    object-fit: cover; 
+    object-position: center;
+    border-radius: 50%;
+    
+}
+
+.slide-top-button{
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    font: inherit; 
+    color: inherit; 
+    cursor: pointer;
+    outline: inherit;
+}
