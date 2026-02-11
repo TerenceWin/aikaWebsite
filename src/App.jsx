@@ -1,22 +1,27 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
-
+import Gallary from './Gallary'
+import About from './About'
 function App() {
     const navItem = ["about", "gallary"]
     const sns = ["instagram", "x", "facebook"]
 
-    const gallary = ["gallary1", "gallary2", "gallary3", "gallary4", "gallary5"]
-    const gallaryDiscription = ["gallary1 text description", "gallary2 text description", 
-      "gallary3 text description", "gallary4 text description", "gallary5 textr description"]
+    const [menuItem, setMenuItem] = useState("gallary"); 
+
+    const getMenuItemColor = (currentItem) => {
+      if(currentItem == menuItem){
+        return "selectedFontColor"
+      }else{
+        return "notSelectedFontColor"
+      }
+    }
 
     const aboutPage = () =>{
-      console.log("About me page")
+      setMenuItem("about")
     }
 
     const gallaryPage = () => {
-      console.log("gallary me page")
+      setMenuItem("gallary")
     }
 
     const scrollToTop = () => {
@@ -35,14 +40,17 @@ function App() {
     <div id="home" className="home-container">
         <div id="header" className="header">
           <div id="name" className="name">
-            NAME
+            AIKA OHNO
           </div>
           <div id="menu" className="menu">
             {navItem.map((item, index) => {
+              let colorClassName = getMenuItemColor(item)
               return (
                 <div 
                   key={index} className="menu-item" onClick={actions[item]}>
-                  {item.toUpperCase()}
+                  <p id="menu-label" className={colorClassName}>
+                    {item.toUpperCase()}
+                  </p>
                 </div>
               )
             })}
@@ -51,17 +59,12 @@ function App() {
 
 
         <div id="context" className="context">
-            {gallary.map((item, index) => {
-              return(
-                <div id="gallary-item" className="gallary-item">
-                  <img src={`/images/gallary1_${index + 1}.jpeg`} className="gallary-item-img"/>
-                  <p>{gallaryDiscription[index]}</p>
-                </div>
-              )
-            })}
+            {menuItem === "gallary" && <Gallary />}
+            {menuItem === "about" && <About />}
         </div>
 
           <hr className="hr-for-footer"/>
+
         <div id="footer" className="footer">
           <div id="footer-left" className="footer-left">
             <p>@2026 JINGUMAE</p>
@@ -73,9 +76,7 @@ function App() {
                   <img src={`/images/${item}.png`} className="sns-logo"/>
                 </button>
               )
-            })
-
-            }
+            })}
           </div>
           <button id="slide-top-button" className="slide-top-button" onClick={scrollToTop}>
             TOP
