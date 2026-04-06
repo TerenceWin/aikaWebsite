@@ -5,45 +5,37 @@
     margin-top: 20px;
     margin-bottom: 0px;
     font-weight: 400;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    column-gap: 50px;
-    row-gap: 50px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 50px;
 }
 
 .gallary-item{
-    box-sizing: border;
-    width: 100%; 
-    height: 500px; 
-    overflow: hidden;
+    box-sizing: border-box;
+    width: fit-content;
+    height: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
-    box-sizing: border-box;
 }
 
 .gallary-item-img{
-    width: 100%;
-    height: 80%; 
-    padding: 0; 
-    margin: 0; 
-    object-fit: cover; 
-    object-position: center;
-    display: block; 
-    cursor: pointer; 
-    border-radius: 3px; 
+    padding: 0;
+    margin: 0;
+    display: block;
+    cursor: pointer;
+    border-radius: 3px;
     box-sizing: border-box;
 }
 
 .gallary-item-description{
     box-sizing: border-box;
-    width: 100%; 
-    height: 20%; 
+    width: 100%;
+    height: auto;
     padding: 0px;
-    margin: 0; 
+    margin: 0;
     margin-top: 5px;
     color: #2f2f2f;
-    overflow-y: scroll; 
 }
 
 .gallary-item-description p{
@@ -63,14 +55,17 @@
 }
 
 .gallary-item-container {
-    position: fixed; 
+    position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
-    height: 100vh; 
-    background-color: rgba(200, 200, 200, 0.94); 
+    height: 100vh;
+    background-color: rgba(200, 200, 200, 0.94);
     z-index: 1000;
     animation: fadeIn 0.5s ease-in forwards;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .close-btn {
@@ -98,25 +93,21 @@
 }
 
 .gallary-context{
-    width: 100%; 
-    max-width: 1300px;
-    height: 100%;
-    display: flex; 
-    justify-content: space-around;
+    display: flex;
+    justify-content: center;
     align-items: center;
-    margin: 0 auto;
+    gap: 20px;
 }
 
 .gallary-library{
-    width: 1000px; 
-    height: 600px; 
-    margin: 0 auto; 
-    margin-top: 0px; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
 }
 
 .current-gallary-img{
-    width: 100%;
-    height: 100%;
+    display: block;
     object-fit: fill;
     object-position: center;
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);

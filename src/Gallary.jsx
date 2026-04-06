@@ -1,37 +1,85 @@
 import { useState } from 'react'
 import './Gallary.css'
-import gallary1_1 from '../public/images/gallary1_1.jpeg'
-import gallary1_2 from '../public/images/gallary1_2.jpeg'
-import gallary1_3 from '../public/images/gallary1_3.jpeg'
-import gallary1_4 from '../public/images/gallary1_4.jpeg'
-import gallary1_5 from '../public/images/gallary1_5.jpeg'
+import gallary1_1 from './images/gallary1_1.jpeg'
+import gallary1_2 from './images/gallary1_2.jpeg'
+import gallary1_3 from './images/gallary1_3.jpeg'
+import gallary1_4 from './images/gallary1_4.jpeg'
+import gallary1_5 from './images/gallary1_5.jpeg'
+import gallary2_1 from './images/gallary2_1.jpeg'
+import gallary2_2 from './images/gallary2_2.jpeg'
+import gallary2_3 from './images/gallary2_3.jpeg'
+import gallary3_1 from './images/gallary3_1.jpeg'
+import gallary3_2 from './images/gallary3_2.jpeg'
+import gallary3_3 from './images/gallary3_3.jpeg'
+import gallary4_1 from './images/gallary4_1.jpeg'
+import gallary4_2 from './images/gallary4_2.jpeg'
+import gallary4_3 from './images/gallary4_3.jpeg'
+
 
 function Gallary(){
     const [gallaryItem, setGallaryItem] = useState(null);
+    const [activeGallaryIndex, setActiveGallaryIndex] = useState(0);
     const [currentDisplayIndex, setCurrentDisplayIndex] = useState(0);
+    const [previewSizes, setPreviewSizes] = useState({});
+    const [popupImgSize, setPopupImgSize] = useState(null);
+    const [popupImgReady, setPopupImgReady] = useState(false);
 
-    const gallary = ["gallary1"] //"gallary2", "gallary3", "gallary4", "gallary5"
-    const gallaryDiscription = ["gallary1 text description"] //, "gallary2 text description", "gallary3 text description", "gallary4 text description", "gallary5 textr description"
+    const handlePopupImageLoad = (e) => {
+        const { naturalWidth, naturalHeight } = e.target;
+        const vw = window.innerWidth;
+        const vh = window.innerHeight;
+        if (naturalWidth >= vw || naturalHeight >= vh) {
+            const scale = Math.min((vw * 0.75) / naturalWidth, (vh * 0.75) / naturalHeight);
+            setPopupImgSize({ width: naturalWidth * scale, height: naturalHeight * scale });
+        } else {
+            setPopupImgSize({ width: naturalWidth, height: naturalHeight });
+        }
+        setPopupImgReady(true);
+    };
+
+    const handlePreviewLoad = (e, index) => {
+        const { naturalWidth, naturalHeight } = e.target;
+        setPreviewSizes(prev => ({
+            ...prev,
+            [index]: { width: naturalWidth * 0.3, height: naturalHeight * 0.3 }
+        }));
+    };
+
+    const gallary = ["gallary1", "gallary2", "gallary3", "gallary4"] //"gallary2", "gallary3", "gallary4", "gallary5"
+    const gallaryDiscription = ["gallary1 text description", "gallary2 text description", 
+      "gallary3 text description", "gallary4 text description"] //, "gallary2 text description", "gallary3 text description", "gallary4 text description", "gallary5 textr description"
     const gallaryArr1 = [gallary1_1, gallary1_2, gallary1_3, gallary1_4, gallary1_5]
-
+    const gallaryArr2 = [gallary2_1, gallary2_2, gallary2_3]
+    const gallaryArr3 = [gallary3_1, gallary3_2, gallary3_3]
+    const gallaryArr4 = [gallary4_1, gallary4_2, gallary4_3]
+    const gallaryArrays = [gallaryArr1, gallaryArr2, gallaryArr3, gallaryArr4]
     const previous = "<<"
     const next = ">>"
 
-    const gallaryItemClicked = (item) => {
+    const gallaryItemClicked = (item, index) => {
       setGallaryItem(item)
+      setActiveGallaryIndex(index)
       setCurrentDisplayIndex(0)
+      setPopupImgSize(null)
+      setPopupImgReady(false)
     }
 
     const previousGallaryItem = () => {
+      const activeArr = gallaryArrays[activeGallaryIndex]
+      setPopupImgSize(null)
+      setPopupImgReady(false)
       if(currentDisplayIndex == 0){
-        setCurrentDisplayIndex(gallaryArr1.length - 1)
+        setCurrentDisplayIndex(activeArr.length - 1)
       }else{
         setCurrentDisplayIndex(currentDisplayIndex - 1)
       }
     }
 
     const nextGallaryItem = () => {
-      if(currentDisplayIndex == (gallaryArr1.length - 1)){
+      const activeArr = gallaryArrays[activeGallaryIndex]
+      setPopupImgSize(null)
+      setPopupImgReady(false)
+      if(currentDisplayIndex == (activeArr.length - 1)){
         setCurrentDisplayIndex(0)
       }else{
         setCurrentDisplayIndex(currentDisplayIndex + 1)
@@ -43,8 +91,13 @@ function Gallary(){
             {gallary.map((item, index) => {
               return(
                 <div id="gallary-item" className="gallary-item" key={index}>
-                  <img src={`/images/gallary${index + 1}_1.jpeg`} className={"gallary-item-img"}
-                  onClick={() => gallaryItemClicked(item)}/>
+                  <img
+                    src={gallaryArrays[index][0]}
+                    className={"gallary-item-img"}
+                    style={previewSizes[index] ? { width: previewSizes[index].width, height: previewSizes[index].height } : {}}
+                    onLoad={(e) => handlePreviewLoad(e, index)}
+                    onClick={() => gallaryItemClicked(item, index)}
+                  />
                   <div id="gallary-item-description" className="gallary-item-description" >
                     <p>{gallaryDiscription[index]}</p>
                   </div>
@@ -60,7 +113,14 @@ function Gallary(){
                     <div className="gallary-context">
                       <button className="previous-button" onClick={() => previousGallaryItem()}>{previous}</button>
                       <div id="gallary-library" className="gallary-library">
-                        <img className="current-gallary-img" src={gallaryArr1[currentDisplayIndex]} />
+                        <img
+                          className="current-gallary-img"
+                          src={gallaryArrays[activeGallaryIndex][currentDisplayIndex]}
+                          style={popupImgSize
+                            ? { width: popupImgSize.width, height: popupImgSize.height, visibility: popupImgReady ? 'visible' : 'hidden' }
+                            : { visibility: 'hidden' }}
+                          onLoad={handlePopupImageLoad}
+                        />
                       </div>
                       <button className="next-button" onClick={() => nextGallaryItem()}>{next}</button>
                     </div>

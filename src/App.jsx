@@ -2,6 +2,9 @@ import { useState } from 'react'
 import './App.css'
 import Gallary from './Gallary'
 import About from './About'
+import instagramIcon from './images/instagram.png'
+import xIcon from './images/x.png'
+import facebookIcon from './images/facebook.png'
 function App() {
     const navItem = ["about", "gallary"]
     const sns = ["instagram", "x", "facebook"]
@@ -35,6 +38,8 @@ function App() {
       "about": aboutPage,
       "gallary": gallaryPage,
     };
+
+    const snsIcons = { instagram: instagramIcon, x: xIcon, facebook: facebookIcon };
 
   return (
     <div id="home" className="home-container">
@@ -73,7 +78,7 @@ function App() {
             {sns.map((item, index) => {
               return(
                 <button key={index} id ={`${index}`} className="SNS-item">
-                  <img src={`/images/${item}.png`} className="sns-logo"/>
+                  <img src={snsIcons[item]} className="sns-logo"/>
                 </button>
               )
             })}
