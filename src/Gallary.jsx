@@ -38,6 +38,7 @@ function Gallary(){
     };
 
     const handlePreviewLoad = (e, index) => {
+        if (window.innerWidth <= 768) return;
         const { naturalWidth, naturalHeight } = e.target;
         setPreviewSizes(prev => ({
             ...prev,

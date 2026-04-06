@@ -39,8 +39,25 @@
 }
 
 .gallary-item-description p{
-    padding: 0; 
-    margin: 0; 
+    padding: 0;
+    margin: 0;
+}
+
+@media (max-width: 768px) {
+    .gallary {
+        flex-direction: column;
+    }
+
+    .gallary-item {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .gallary-item-img {
+        width: 100% !important;
+        height: auto !important;
+        max-width: 100%;
+    }
 }
 
 @keyframes fadeIn {
