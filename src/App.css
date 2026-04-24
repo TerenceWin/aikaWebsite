@@ -4,6 +4,44 @@
        url(https://cdn.jsdelivr.net/gh/raisty/OCR-B/dist/OCR-B.otf) format("opentype");
 }
 
+/* Neue Haas Grotesk Display */
+@font-face {
+  font-family: "NeueHaasGrotesk";
+  src: url('./assets/fonts/Neue_Haas_Grotesk_Collection/Neue Haas Grotesk Display Family/NeueHaasGrotDisp-45Light-Trial.otf') format('opentype');
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
+  font-family: "NeueHaasGrotesk";
+  src: url('./assets/fonts/Neue_Haas_Grotesk_Collection/Neue Haas Grotesk Display Family/NeueHaasGrotDisp-46LightItalic-Trial.otf') format('opentype');
+  font-weight: 300;
+  font-style: italic;
+}
+@font-face {
+  font-family: "NeueHaasGrotesk";
+  src: url('./assets/fonts/Neue_Haas_Grotesk_Collection/Neue Haas Grotesk Display Family/NeueHaasGrotDisp-55Roman-Trial.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: "NeueHaasGrotesk";
+  src: url('./assets/fonts/Neue_Haas_Grotesk_Collection/Neue Haas Grotesk Display Family/NeueHaasGrotDisp-56Italic-Trial.otf') format('opentype');
+  font-weight: 400;
+  font-style: italic;
+}
+@font-face {
+  font-family: "NeueHaasGrotesk";
+  src: url('./assets/fonts/Neue_Haas_Grotesk_Collection/Neue Haas Grotesk Display Family/NeueHaasGrotDisp-65Medium-Trial.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: "NeueHaasGrotesk";
+  src: url('./assets/fonts/Neue_Haas_Grotesk_Collection/Neue Haas Grotesk Display Family/NeueHaasGrotDisp-75Bold-Trial.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+}
+
 @font-face{
     font-family: 'IBMPlexMono';
     src: url('./assets/fonts/ibm-plex-mono/IBMPlexMono-Regular.ttf') format('truetype');
@@ -17,7 +55,8 @@ html, body{
     padding: 0;
     width: 100%;
     height: 100%;
-    font-family: 'IBMPlexMono', sans-serif;
+    font-family: 'NeueHaasGrotesk', sans-serif;
+    font-weight: 400;
     overscroll-behavior: none;
     box-sizing: border-box;
     overflow-x: hidden;
@@ -25,15 +64,18 @@ html, body{
 
 
 .home-container{
-    width: 100vw; 
-    padding: 0; 
-    margin: 0; 
-    background-color: #ede4da
+    width: 100vw;
+    min-height: 100vh;
+    padding: 0;
+    margin: 0;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
 }
 
 .header{
     height: 100px; 
-    width: 95%; 
+    width: 90%; 
     display: flex; 
     justify-content: space-between;
     align-items: center;
@@ -63,29 +105,19 @@ html, body{
 }
 
 .selectedFontColor{
-    color: rgb(160, 160, 160);
+    color: rgb(97, 97, 97); 
+    font-weight: 400; 
 }
 
 .notSelectedFontColor{
-    color: rgb(97, 97, 97); 
+    color: rgb(160, 160, 160);
+    font-weight: 400; 
 }
 
 .context{
-    width: 90%; 
-    margin: 0 auto; 
-}
-
-
-.hr-for-footer{
-    padding: 0; 
-    margin: 0;
-    margin-top: 0px;
-    border: none; 
-    height: 1px;
-    width: 95%;
-    background-color: black;
+    width: 90%;
     margin: 0 auto;
-    margin-top: 30px; 
+    flex: 1;
 }
 
 .footer{
@@ -102,6 +134,11 @@ html, body{
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    color: rgb(97, 97, 97); 
+}
+
+.footerHidden{
+    display: none; 
 }
 
 .SNS{
@@ -132,13 +169,14 @@ html, body{
     
 }
 
-.slide-top-button{
+.topButton{
     background: none;
     border: none;
-    padding: 0;
-    margin: 0;
+    padding: 0; margin: 0; 
     font: inherit; 
     color: inherit; 
     cursor: pointer;
     outline: inherit;
+    color: rgb(97, 97, 97); 
 }
+

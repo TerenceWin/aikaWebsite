@@ -5,15 +5,11 @@ import gallary1_2 from './images/gallary1_2.jpeg'
 import gallary1_3 from './images/gallary1_3.jpeg'
 import gallary1_4 from './images/gallary1_4.jpeg'
 import gallary1_5 from './images/gallary1_5.jpeg'
-import gallary2_1 from './images/gallary2_1.jpeg'
-import gallary2_2 from './images/gallary2_2.jpeg'
-import gallary2_3 from './images/gallary2_3.jpeg'
-import gallary3_1 from './images/gallary3_1.jpeg'
-import gallary3_2 from './images/gallary3_2.jpeg'
-import gallary3_3 from './images/gallary3_3.jpeg'
-import gallary4_1 from './images/gallary4_1.jpeg'
-import gallary4_2 from './images/gallary4_2.jpeg'
-import gallary4_3 from './images/gallary4_3.jpeg'
+import gallary2_1 from "./images/gallary2_1.jpg"
+import gallary2_2 from "./images/gallary2_2.jpg"
+import gallary2_3 from "./images/gallary2_3.jpg"
+import gallary2_4 from "./images/gallary2_4.jpg"
+import gallary2_5 from "./images/gallary2_5.jpg"
 
 
 function Gallary(){
@@ -46,16 +42,30 @@ function Gallary(){
         }));
     };
 
-    const gallary = ["gallary1", "gallary2", "gallary3", "gallary4"] //"gallary2", "gallary3", "gallary4", "gallary5"
-    const gallaryDiscription = ["gallary1 text description", "gallary2 text description", 
-      "gallary3 text description", "gallary4 text description"] //, "gallary2 text description", "gallary3 text description", "gallary4 text description", "gallary5 textr description"
+    const gallary = ["gallary1", "gallary2"]
+    const gallaryDiscription = ["gallery1 text description", "gallery2 text description"]
     const gallaryArr1 = [gallary1_1, gallary1_2, gallary1_3, gallary1_4, gallary1_5]
-    const gallaryArr2 = [gallary2_1, gallary2_2, gallary2_3]
-    const gallaryArr3 = [gallary3_1, gallary3_2, gallary3_3]
-    const gallaryArr4 = [gallary4_1, gallary4_2, gallary4_3]
-    const gallaryArrays = [gallaryArr1, gallaryArr2, gallaryArr3, gallaryArr4]
-    const previous = "<<"
-    const next = ">>"
+    const gallaryArr2 = [gallary2_1, gallary2_2, gallary2_3, gallary2_4, gallary2_5]
+    const gallaryArrays = [gallaryArr1, gallaryArr2]
+
+    const CloseSVG = () => (
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <line x1="1" y1="1" x2="15" y2="15" stroke="#313131" strokeWidth="1.5" strokeLinecap="round"/>
+            <line x1="15" y1="1" x2="1" y2="15" stroke="#313131" strokeWidth="1.5" strokeLinecap="round"/>
+        </svg>
+    )
+
+    const PrevSVG = () => (
+        <svg width="9" height="16" viewBox="0 0 9 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <polyline points="8,1 1,8 8,15" stroke="#313131" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
+        </svg>
+    )
+
+    const NextSVG = () => (
+        <svg width="9" height="16" viewBox="0 0 9 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <polyline points="1,1 8,8 1,15" stroke="#313131" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
+        </svg>
+    )
 
     const gallaryItemClicked = (item, index) => {
       setGallaryItem(item)
@@ -109,10 +119,14 @@ function Gallary(){
             {gallaryItem && (
               <div className="popup-wrapper">
                 <div id="gallary-item-container" className="gallary-item-container">
-                    <button className="close-btn" onClick={() => setGallaryItem(null)}>X</button>
-                    
+                    <button className="close-btn" onClick={() => setGallaryItem(null)}>
+                        <CloseSVG />
+                    </button>
+
                     <div className="gallary-context">
-                      <button className="previous-button" onClick={() => previousGallaryItem()}>{previous}</button>
+                      <button className="previous-button" onClick={() => previousGallaryItem()}>
+                          <PrevSVG />
+                      </button>
                       <div id="gallary-library" className="gallary-library">
                         <img
                           className="current-gallary-img"
@@ -123,9 +137,11 @@ function Gallary(){
                           onLoad={handlePopupImageLoad}
                         />
                       </div>
-                      <button className="next-button" onClick={() => nextGallaryItem()}>{next}</button>
+                      <button className="next-button" onClick={() => nextGallaryItem()}>
+                          <NextSVG />
+                      </button>
                     </div>
-                    
+
                 </div>
               </div>
             )}

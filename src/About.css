@@ -1,0 +1,80 @@
+.aboutWrapper {
+    width: 100%;
+    margin-top: 150px;
+    box-sizing: border-box;
+    font-size: 18px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 0 60px 0;
+    color: #313131;
+}
+
+.aboutTitle {
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    margin: 0 0 50px 0;
+    text-align: center;
+    margin-top: 100px;
+}
+
+.aboutContent {
+    width: 55%;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.aboutBio {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.aboutBio p {
+    margin: 0;
+}
+
+.aboutDescription {
+    margin: 0;
+    margin-top: 20px;
+    line-height: 1.7;
+}
+
+.aboutImagePlaceholder {
+    width: 6px;
+    height: 60px;
+    background-color: #b8cfe8;
+}
+
+.contactSection {
+    display: flex;
+    flex-direction: flex;
+    gap: 2px;
+    margin-top: 520px;
+
+}
+
+.contactSection p {
+    padding: 0; 
+    margin: 0;
+}
+
+.contactSection p:last-of-type{
+    margin-left: 100px;
+}
+
+@media (max-width: 768px) {
+    .aboutContent {
+        width: 85%;
+    }
+}
+
+.igLink{
+    all: unset; 
+}
+
+.igLink:hover{
+    cursor: pointer;
+    text-decoration: underline;
+}

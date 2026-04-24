@@ -5,11 +5,13 @@ import About from './About'
 import instagramIcon from './images/instagram.png'
 import xIcon from './images/x.png'
 import facebookIcon from './images/facebook.png'
+
 function App() {
-    const navItem = ["about", "gallary"]
+    const navItem = ["gallery", "about"]
     const sns = ["instagram", "x", "facebook"]
 
-    const [menuItem, setMenuItem] = useState("gallary"); 
+    const [menuItem, setMenuItem] = useState("gallery"); 
+    const [isAbout, setIsAbout] = useState(false); 
 
     const getMenuItemColor = (currentItem) => {
       if(currentItem == menuItem){
@@ -21,10 +23,12 @@ function App() {
 
     const aboutPage = () =>{
       setMenuItem("about")
+      setIsAbout(true)
     }
 
-    const gallaryPage = () => {
-      setMenuItem("gallary")
+    const galleryPage = () => {
+      setMenuItem("gallery")
+      setIsAbout(false)
     }
 
     const scrollToTop = () => {
@@ -36,7 +40,7 @@ function App() {
 
     const actions = {
       "about": aboutPage,
-      "gallary": gallaryPage,
+      "gallery": galleryPage,
     };
 
     const snsIcons = { instagram: instagramIcon, x: xIcon, facebook: facebookIcon };
@@ -64,26 +68,15 @@ function App() {
 
 
         <div id="context" className="context">
-            {menuItem === "gallary" && <Gallary />}
+            {menuItem === "gallery" && <Gallary />}
             {menuItem === "about" && <About />}
         </div>
 
-          <hr className="hr-for-footer"/>
-
-        <div id="footer" className="footer">
+        <div id="footer" className={isAbout ? `footerHidden` : `footer`}>
           <div id="footer-left" className="footer-left">
             <p>@2026 JINGUMAE</p>
           </div>
-          <div id="SNS" className="SNS">
-            {sns.map((item, index) => {
-              return(
-                <button key={index} id ={`${index}`} className="SNS-item">
-                  <img src={snsIcons[item]} className="sns-logo"/>
-                </button>
-              )
-            })}
-          </div>
-          <button id="slide-top-button" className="slide-top-button" onClick={scrollToTop}>
+          <button id="slide-top-button" className="topButton" onClick={scrollToTop}>
             TOP
           </button>
         </div>
