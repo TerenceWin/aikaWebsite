@@ -23,6 +23,7 @@ function About(){
                 <div className="contactSection">
                     <p>Mail: aikaohno.work@gmail.com</p>
                     <p>Instagram: <a className="igLink" href="https://www.instagram.com/aikaohno/">@aikaohno</a></p>
+                    <div className="placeholder"></div>
                 </div>
 
             </div>
