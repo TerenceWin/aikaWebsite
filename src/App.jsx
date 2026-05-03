@@ -67,18 +67,16 @@ function App() {
         </div>
 
 
-        <div id="context" className="context">
+        <div className="context">
             {menuItem === "gallery" && <Gallary />}
             {menuItem === "about" && <About />}
         </div>
 
         <div id="footer" className={isAbout ? `footerHidden` : `footer`}>
-          <div id="footer-left" className="footer-left">
             <p>@2026 JINGUMAE</p>
-          </div>
-          <button id="slide-top-button" className="topButton" onClick={scrollToTop}>
-            TOP
-          </button>
+            <button id="slide-top-button" className="topButton" onClick={scrollToTop}>
+              TOP
+            </button>
         </div>
     </div>
   )

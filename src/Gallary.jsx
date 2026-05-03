@@ -19,6 +19,8 @@ function Gallary(){
     const [previewSizes, setPreviewSizes] = useState({});
     const [popupImgSize, setPopupImgSize] = useState(null);
     const [popupImgReady, setPopupImgReady] = useState(false);
+    const [slideDirection, setSlideDirection] = useState(null);
+    const [isClosing, setIsClosing] = useState(false);
 
     const handlePopupImageLoad = (e) => {
         const { naturalWidth, naturalHeight } = e.target;
@@ -43,7 +45,7 @@ function Gallary(){
     };
 
     const gallary = ["gallary1", "gallary2"]
-    const gallaryDiscription = ["gallery1 text description", "gallery2 text description"]
+    const gallaryDiscription = ["DASSIN/ September 2025", "Growing Underground: A Design Experiment/ April 2023"]
     const gallaryArr1 = [gallary1_1, gallary1_2, gallary1_3, gallary1_4, gallary1_5]
     const gallaryArr2 = [gallary2_1, gallary2_2, gallary2_3, gallary2_4, gallary2_5]
     const gallaryArrays = [gallaryArr1, gallaryArr2]
@@ -73,12 +75,15 @@ function Gallary(){
       setCurrentDisplayIndex(0)
       setPopupImgSize(null)
       setPopupImgReady(false)
+      setSlideDirection(null)
+      setIsClosing(false)
     }
 
     const previousGallaryItem = () => {
       const activeArr = gallaryArrays[activeGallaryIndex]
       setPopupImgSize(null)
       setPopupImgReady(false)
+      setSlideDirection('prev')
       if(currentDisplayIndex == 0){
         setCurrentDisplayIndex(activeArr.length - 1)
       }else{
@@ -90,12 +95,30 @@ function Gallary(){
       const activeArr = gallaryArrays[activeGallaryIndex]
       setPopupImgSize(null)
       setPopupImgReady(false)
+      setSlideDirection('next')
       if(currentDisplayIndex == (activeArr.length - 1)){
         setCurrentDisplayIndex(0)
       }else{
         setCurrentDisplayIndex(currentDisplayIndex + 1)
       }
     }
+
+    const handleClose = () => {
+      setIsClosing(true)
+    }
+
+    const handleContainerAnimationEnd = () => {
+      if (isClosing) {
+        setGallaryItem(null)
+        setIsClosing(false)
+      }
+    }
+
+    const imgAnimClass = slideDirection === 'next'
+      ? 'img-slide-next'
+      : slideDirection === 'prev'
+        ? 'img-slide-prev'
+        : ''
 
     return(
         <div id="gallary" className="gallary">
@@ -118,8 +141,12 @@ function Gallary(){
 
             {gallaryItem && (
               <div className="popup-wrapper">
-                <div id="gallary-item-container" className="gallary-item-container">
-                    <button className="close-btn" onClick={() => setGallaryItem(null)}>
+                <div
+                  id="gallary-item-container"
+                  className={`gallary-item-container${isClosing ? ' popup-fade-out' : ''}`}
+                  onAnimationEnd={handleContainerAnimationEnd}
+                >
+                    <button className="close-btn" onClick={handleClose}>
                         <CloseSVG />
                     </button>
 
@@ -129,7 +156,8 @@ function Gallary(){
                       </button>
                       <div id="gallary-library" className="gallary-library">
                         <img
-                          className="current-gallary-img"
+                          key={currentDisplayIndex}
+                          className={`current-gallary-img${imgAnimClass ? ` ${imgAnimClass}` : ''}`}
                           src={gallaryArrays[activeGallaryIndex][currentDisplayIndex]}
                           style={popupImgSize
                             ? { width: popupImgSize.width, height: popupImgSize.height, visibility: popupImgReady ? 'visible' : 'hidden' }

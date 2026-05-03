@@ -1,12 +1,11 @@
 .aboutWrapper {
-    width: 100%;
+    max-width: 1400px;
     min-height: calc(100vh - 100px);
-    box-sizing: border-box;
     font-size: 17px;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
-    padding: 40px 0 60px 0;
     color: #313131;
 }
 
@@ -18,10 +17,10 @@
 }
 
 .aboutContent {
-    width: 55%;
     display: flex;
     flex-direction: column;
     gap: 30px;
+    text-align: center;
 }
 
 .aboutBio {
@@ -35,8 +34,10 @@
 }
 
 .aboutDescription {
+    padding: 0; 
     margin: 0;
     line-height: 1.7;
+
 }
 
 .aboutImagePlaceholder {
@@ -47,11 +48,10 @@
 
 .contactSection {
     display: flex;
-    flex-direction: flex;
+    flex-direction: column;
     justify-content: space-between; align-items: center;
     gap: 2px;
     width: 100%;
-    margin-top: 50px;
 }
 
 .contactSection p {

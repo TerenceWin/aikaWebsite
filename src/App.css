@@ -53,8 +53,6 @@
 html, body{
     margin: 0;
     padding: 0;
-    width: 100%;
-    height: 100%;
     font-family: 'NeueHaasGrotesk', sans-serif;
     font-weight: 400;
     overscroll-behavior: none;
@@ -64,7 +62,6 @@ html, body{
 
 
 .home-container{
-    width: 100vw;
     min-height: 100vh;
     padding: 0;
     margin: 0;
@@ -105,8 +102,12 @@ html, body{
 }
 
 .selectedFontColor{
-    color: rgb(97, 97, 97); 
-    font-weight: 400; 
+    color: rgb(97, 97, 97);
+    font-weight: 400;
+}
+
+.selectedFontColor:hover{
+    text-decoration: underline;
 }
 
 .notSelectedFontColor{
@@ -129,14 +130,8 @@ html, body{
     display: flex; 
     justify-content: space-between;
     align-items: center;
-}
-
-.footer-left{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    color: rgb(97, 97, 97); 
+    margin-bottom: 50px; 
+    box-sizing: border-box;
 }
 
 .footerHidden{
@@ -174,11 +169,15 @@ html, body{
 .topButton{
     background: none;
     border: none;
-    padding: 0; margin: 0; 
-    font: inherit; 
-    color: inherit; 
+    padding: 0; margin: 0;
+    font: inherit;
+    color: inherit;
     cursor: pointer;
     outline: inherit;
-    color: rgb(97, 97, 97); 
+    color: rgb(97, 97, 97);
+}
+
+.topButton:hover{
+    text-decoration: underline;
 }
 

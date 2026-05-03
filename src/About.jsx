@@ -8,16 +8,11 @@ function About(){
 
             <div className="aboutContent">
 
-                <div className="aboutBio">
-                    <p>Born in London, UK</p>
-                    <p>Raised in Tokyo, Japan</p>
-                </div>
-
                 <p className="aboutDescription">
-                    Aika Ohno is a spatial designer working across interior
-                    and experiential design. Her work explores the relationship
-                    between concept and space. She studied Marketing at Aoyama
-                    Gakuin University and Interior Design in London.
+                    Aika Ohno is a spatial designer working across interior and experiential design.<br></br>
+                    Her work explores the relationship between concept and space — shaped by a life between London and Tokyo.<br></br>
+                    She studied Marketing in Tokyo and Interior Design in London.
+
                 </p>
 
                 <div className="contactSection">
