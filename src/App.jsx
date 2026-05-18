@@ -1,85 +1,43 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 import './App.css'
 import Gallary from './Gallary'
-import About from './About'
-import instagramIcon from './images/instagram.png'
-import xIcon from './images/x.png'
-import facebookIcon from './images/facebook.png'
+import NavBar from './NavBar'
 
 function App() {
-    const navItem = ["gallery", "about"]
-    const sns = ["instagram", "x", "facebook"]
+    const [contentVisible, setContentVisible] = useState(false)
+    const navigate = useNavigate()
 
-    const [menuItem, setMenuItem] = useState("gallery"); 
-    const [isAbout, setIsAbout] = useState(false); 
+    useEffect(() => {
+        setContentVisible(true)
+    }, [])
 
-    const getMenuItemColor = (currentItem) => {
-      if(currentItem == menuItem){
-        return "selectedFontColor"
-      }else{
-        return "notSelectedFontColor"
-      }
-    }
-
-    const aboutPage = () =>{
-      setMenuItem("about")
-      setIsAbout(true)
-    }
-
-    const galleryPage = () => {
-      setMenuItem("gallery")
-      setIsAbout(false)
+    const navigateWithFade = (path) => {
+        if (path === "/") return
+        setContentVisible(false)
+        setTimeout(() => navigate(path), 250)
     }
 
     const scrollToTop = () => {
-      window.scrollTo({
-        top: 0, 
-        behavior: 'smooth'
-      });
+        window.scrollTo({ top: 0, behavior: 'smooth' })
     }
 
-    const actions = {
-      "about": aboutPage,
-      "gallery": galleryPage,
-    };
+    return (
+        <div id="home" className="home-container">
+            <NavBar currentPage="gallery" onNavigate={navigateWithFade} />
 
-    const snsIcons = { instagram: instagramIcon, x: xIcon, facebook: facebookIcon };
+            <div className={`context ${contentVisible ? "content-visible" : "content-hidden"}`}>
+                <Gallary onNavigate={navigateWithFade} />
+            </div>
 
-  return (
-    <div id="home" className="home-container">
-        <div id="header" className="header">
-          <div id="name" className="name">
-            AIKA OHNO
-          </div>
-          <div id="menu" className="menu">
-            {navItem.map((item, index) => {
-              let colorClassName = getMenuItemColor(item)
-              return (
-                <div 
-                  key={index} className="menu-item" onClick={actions[item]}>
-                  <p id="menu-label" className={colorClassName}>
-                    {item.toUpperCase()}
-                  </p>
-                </div>
-              )
-            })}
-          </div>
+            <div id="footer" className="footer">
+                <p>@2026 JINGUMAE</p>
+                <button id="slide-top-button" className="topButton" onClick={scrollToTop}>
+                    TOP
+                </button>
+            </div>
         </div>
-
-
-        <div className="context">
-            {menuItem === "gallery" && <Gallary />}
-            {menuItem === "about" && <About />}
-        </div>
-
-        <div id="footer" className={isAbout ? `footerHidden` : `footer`}>
-            <p>@2026 JINGUMAE</p>
-            <button id="slide-top-button" className="topButton" onClick={scrollToTop}>
-              TOP
-            </button>
-        </div>
-    </div>
-  )
+    )
 }
 
 export default App

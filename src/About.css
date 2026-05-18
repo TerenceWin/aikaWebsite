@@ -1,6 +1,6 @@
 .aboutWrapper {
-    max-width: 1400px;
-    min-height: calc(100vh - 100px);
+    max-width: 100vw;
+    min-height: calc(100vh - 300px);
     font-size: 17px;
     display: flex;
     flex-direction: column;

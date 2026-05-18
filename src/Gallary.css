@@ -17,6 +17,15 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+
+}
+
+.gallary-item:hover{
+    cursor: pointer;
+}
+
+.gallery-item-img-wrapper{
+    padding-top: 10px;
 }
 
 .gallary-item-img{

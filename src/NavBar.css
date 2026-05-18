@@ -1,0 +1,48 @@
+.hamburger-btn {
+    display: none;
+}
+
+.mobile-dropdown {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .menu {
+        display: none;
+    }
+
+    .hamburger-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-size: 22px;
+        color: rgb(97, 97, 97);
+        padding: 0;
+        margin-right: 4px;
+    }
+
+    .mobile-dropdown {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        right: 6%;
+        background-color: #ffffff;
+        z-index: 100;
+        gap: 0;
+    }
+
+    .mobile-dropdown-item {
+        padding: 14px 24px;
+        cursor: pointer;
+        text-align: right;
+    }
+
+    .mobile-dropdown-item p {
+        margin: 0;
+        padding: 0;
+    }
+}

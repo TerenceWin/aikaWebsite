@@ -57,35 +57,39 @@ html, body{
     font-weight: 400;
     overscroll-behavior: none;
     box-sizing: border-box;
-    overflow-x: hidden;
+    overflow-x: clip;
 }
 
 
 .home-container{
     min-height: 100vh;
+    width: 100%;
     padding: 0;
     margin: 0;
+    box-sizing: border-box;
     background-color: #ffffff;
     display: flex;
     flex-direction: column;
 }
 
 .header{
-    height: 100px; 
-    width: 90%; 
-    display: flex; 
+    height: 100px;
+    width: 88%;
+    display: flex;
     justify-content: space-between;
     align-items: center;
     margin: 0 auto;
     font-weight: bolder;
+    margin-top: 60px;
+    position: relative;
 }
 
 .name{
-    font-size: 44px;
-    font-weight: 400;
-    margin-left: 5px; 
+    font-size: 48px;
+    font-weight: 300;
+    margin-left: 5px;
     color: rgb(48, 48, 48);
-
+    cursor: pointer;
 }
 
 .menu{
@@ -104,10 +108,8 @@ html, body{
 .selectedFontColor{
     color: rgb(97, 97, 97);
     font-weight: 400;
-}
-
-.selectedFontColor:hover{
     text-decoration: underline;
+    text-underline-offset: 4px;
 }
 
 .notSelectedFontColor{
@@ -116,22 +118,35 @@ html, body{
 }
 
 .context{
-    width: 90%;
+    width: 88%;
     margin: 0 auto;
     flex: 1;
     display: flex;
     flex-direction: column;
+    transition: opacity 0.25s ease;
+    padding: 0; 
+    box-sizing: border-box;
+}
+
+.content-visible {
+    opacity: 1;
+}
+
+.content-hidden {
+    opacity: 0;
 }
 
 .footer{
-    width: 90%;
-    height: 100px; 
-    margin: 0 auto; 
-    display: flex; 
+    width: 100%;
+    padding: 0 6%;
+    display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 50px; 
     box-sizing: border-box;
+    position: sticky;
+    bottom: 0;
+    background-color: #ffffff;
+    height: 60px;
 }
 
 .footerHidden{
@@ -179,5 +194,21 @@ html, body{
 
 .topButton:hover{
     text-decoration: underline;
+}
+
+@media (min-width: 1024px) and (max-width: 1520px) {
+    .header {
+        margin-top: 30px;
+    }
+}
+
+@media (max-width: 768px) {
+    .name {
+        font-size: 28px;
+    }
+    
+    .header{
+        margin-top: 0px;
+    }
 }
 
